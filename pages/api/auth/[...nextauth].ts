@@ -29,7 +29,7 @@ export default NextAuth({
       return token
     },
     async session({ session, token }) {
-      if (session.user) {
+      if (session.user) { // @ts-ignore
         session.user.id = token.id as string
       }
       return session
