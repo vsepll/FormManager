@@ -1,5 +1,18 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+import { Session } from "next-auth";
+
+// Extend the Session type to include user.id
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+    };
+  }
+}
 
 export default NextAuth({
   providers: [
@@ -29,7 +42,7 @@ export default NextAuth({
       return token
     },
     async session({ session, token }) {
-      if (session.user) { // @ts-ignore
+      if (session.user) { 
         session.user.id = token.id as string
       }
       return session
