@@ -13,7 +13,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { format } from "date-fns"
 import { toast } from "react-hot-toast"
-import { Modal, ModalHeader, ModalBody, ModalFooter } from './ui/modal'; // Assuming you have a modal component
 
 type SectorType = "general" | "numbered"
 
@@ -124,7 +123,7 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
   const [excelFile, setExcelFile] = useState<File | null>(null)
   const [isUploading, setIsUploading] = useState(false)
   const [showModal, setShowModal] = useState(false)
-  const [successMessage, setSuccessMessage] = useState('')
+  const [isUpdated, setIsUpdated] = useState(false)
 
   useEffect(() => {
     if (initialData) {
@@ -310,12 +309,18 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
       }
 
       if (initialData && initialData._id) {
-        await axios.put(`/api/updatePlanillas/${initialData._id}`, dataToSend)
-        setSuccessMessage("Planilla actualizada exitosamente")
+        await axios.put(`/api/updatePlanillas/${initialData._id}`, dataToSend);
+
       } else {
         await axios.post("/api/planillas", dataToSend)
-        setSuccessMessage("Planilla creada exitosamente")
+
       }
+
+      // Mostrar mensaje de confirmación
+      setIsUpdated(true)
+
+      // Ocultar mensaje después de unos segundos, si lo deseas
+      setTimeout(() => setIsUpdated(false), 3000)
     } catch (error) {
       console.error("Error al guardar la planilla:", error)
       toast.error("Error al guardar la planilla")
@@ -357,7 +362,6 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
   return (
     <>
       <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-6 space-y-8">
-        {successMessage && <p className="text-green-600">{successMessage}</p>}
         <h1 className="text-3xl font-bold text-center">
           {initialData ? "Editar Planilla" : "Nueva Planilla"}
         </h1>
@@ -1239,15 +1243,9 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
         <Button type="submit" className="w-full">
           {initialData ? "Actualizar planilla" : "Crear planilla"}
         </Button>
-
-        {/* Mueve el mensaje de éxito aquí, justo después del botón de envío */}
-        {successMessage && <p className="text-green-600 mt-4">{successMessage}</p>}
+        {isUpdated && <p className="text-green-500">Planilla actualizada exitosamente</p>}
       </form>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-            <Button onClick={() => setShowModal(false)}>Close</Button>
-        </Modal>
-      )}
+
     </>
   )
 }
