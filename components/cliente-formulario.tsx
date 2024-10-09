@@ -471,7 +471,7 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
               <Popover>
                 <PopoverTrigger asChild>
                   <Button variant="outline" className="w-full justify-start">
-                    {formData.eventDate ? format(formData.eventDate, "PPP") : "Seleccionar fecha"}
+                    {formData.eventDate ? format(formData.eventDate, "PPP") : "Fecha"}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
@@ -501,7 +501,7 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
                 name="duration"
                 value={formData.duration}
                 onChange={handleInputChange}
-                placeholder="Ingrese la duración"
+                placeholder="Duración"
               />
             </div>
           </div>
@@ -517,7 +517,7 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button variant="outline" className="w-full justify-start">
-                        {func.date ? format(func.date, "PPP") : "Seleccionar fecha"}
+                        {func.date ? format(func.date, "PPP") : "Fecha"}
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0">
@@ -539,7 +539,7 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button variant="outline" className="w-full justify-start">
-                        {func.endDate ? format(func.endDate, "PPP") : "Seleccionar fecha"}
+                        {func.endDate ? format(func.endDate, "PPP") : "Fecha"}
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0">
