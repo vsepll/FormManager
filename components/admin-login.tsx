@@ -14,19 +14,22 @@ export default function AdminLogin() {
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
+    e.preventDefault();
+    setError('');
 
     const result = await signIn('credentials', {
       redirect: false,
       email,
       password,
-    })
+    });
+
+    console.log('SignIn Result:', result); // Log the result for debugging
 
     if (result?.error) {
-      setError('Invalid email or password')
+      setError('Invalid email or password');
     } else {
-      router.push('/control-panel')
+      console.log('Redirecting to control panel'); // Log before redirect
+      router.push('/control-panel');
     }
   }
 
