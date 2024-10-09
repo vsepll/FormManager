@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
-module.exports = {
+  
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -10,12 +9,15 @@ module.exports = {
         net: false,
         tls: false,
         fs: false,
+        dns: false,
+        child_process: false,
+        timers: false,
+        'timers/promises': false,
       }
     }
     return config
   },
 }
-
 module.exports = {
   experimental: {
     appDir: true,
