@@ -57,7 +57,7 @@ export default function ClienteFormularioPage() {
   return (
     <div className="container mx-auto py-8">
 <div className="flex flex-col items-center justify-center  bg-white p-4">
-      <h1 className="text-4xl font-bold mb-8">Formulario de carga</h1>
+      <h1 className="text-4xl font-bold mb-8" color="black">Formulario de carga</h1>
       <img
         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/png-01-uZHWp6bZ16NNUZAqP9DFXViu2LEjmU.png"
         alt="Auto Entrada Logo"
