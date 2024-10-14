@@ -24,7 +24,7 @@ export default NextAuth({
       },
       async authorize(credentials) {
         // This is a simplified authentication logic. In production, you should verify against a database.
-        if (credentials?.email === "admin@example.com" && credentials?.password === "password") {
+        if (credentials?.email === "admin@autoentrada.com" && credentials?.password === "password") {
           return { id: "1", name: "Admin", email: "admin@example.com" }
         }
         return null
@@ -42,7 +42,7 @@ export default NextAuth({
       return token
     },
     async session({ session, token }) {
-      if (session.user) { 
+      if (session.user) { // @ts-ignore
         session.user.id = token.id as string
       }
       return session
