@@ -371,7 +371,7 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
 
         <div className="space-y-4">
           <h2 className="text-xl font-semibold">Acuerdo comercial</h2>
-          <p className="text-center text-gray-600">
+          <p className="text-left text-gray-600">
           Esto lo completara su asesor
         </p>
           <div className="grid grid-cols-3 gap-4">
