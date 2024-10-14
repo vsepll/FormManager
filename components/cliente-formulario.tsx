@@ -371,6 +371,7 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
 
         <div className="space-y-4">
           <h2 className="text-xl font-semibold">Acuerdo comercial</h2>
+          <h3 className="text-xl font-light" color='gray'>estos datos los completara su asesor</h3>
           <div className="grid grid-cols-3 gap-4">
             <div>
               <Label htmlFor="percentage1">Medios de pago</Label>
@@ -742,7 +743,7 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
         </div>
 
         <div className="space-y-4">
-          <Label htmlFor="extraData">Datos extra (hosts, invitados, sectores que van a prensa, etc)</Label>
+          <Label htmlFor="extraData">Datos extra (Bloqueos, Pedidos especiales, sectores con preventa, etc.)</Label>
           <Textarea
             id="extraData"
             name="extraData"
@@ -753,7 +754,7 @@ export default function PlanillaForm({ initialData }: PlanillaFormProps) {
         </div>
 
         <div className="space-y-4">
-          <Label htmlFor="excelUpload">Cargar archivo Excel</Label>
+          <Label htmlFor="excelUpload">Cargar excel del mapa</Label>
           <div className="flex items-center space-x-4">
             <Input
               id="excelUpload"
