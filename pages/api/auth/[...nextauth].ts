@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { Session } from "next-auth";
+import { env } from "process";
 
 // Extend the Session type to include user.id
 declare module "next-auth" {
@@ -24,7 +25,7 @@ export default NextAuth({
       },
       async authorize(credentials) {
         // This is a simplified authentication logic. In production, you should verify against a database.
-        if (credentials?.email === "admin@autoentrada.com" && credentials?.password === "password") {
+        if (credentials?.email === env.email && credentials?.password === env.password) {
           return { id: "1", name: "Admin", email: "admin@example.com" }
         }
         return null
